@@ -5,12 +5,13 @@ import { useRecoilState } from 'recoil';
 import cartState from '../components/cart/atom.js';
 import { addItemSelector } from '../components/cart/selectors';
 import '../styles.css';
+const url ='https://gist.githubusercontent.com/sawariz0r/9c5774332ae86071dd0750d877c899ba/raw/2c05a7d73bb0f18b3b0731af1634d856189022fd/fakedata.json';
 
 
 const Product = () => {
 	const params = useParams();
 	const [_, addItem] = useRecoilState(addItemSelector);
-	const { result, status } = useProducts('../resources/products.json', {product: [parseInt(params.id)]});
+	const { result, status } = useProducts(url, {product: [parseInt(params.id)]});
 
   const [quantity, setQuantity] = useState(1);
 	const [addStatus, setAddStatus] = useState('');
